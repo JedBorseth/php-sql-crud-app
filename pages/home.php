@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once("../includes/dbinfo.php");
 include_once("../includes/components.php");
 include_once("../includes/config.php");

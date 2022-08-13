@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once("../includes/components.php");
 include_once("../includes/config.php");
 include_once("../includes/dbinfo.php");
@@ -27,7 +28,7 @@ include_once("../includes/functions.php");
 
 </form>
 <?php
-handleLogin(initDb());
+echo handleLogin(initDb());
 
 ?>
 </body>
