@@ -1,7 +1,10 @@
 <?php
 session_start();
-include_once("../includes/components.php")
-
+include_once("../includes/components.php");
+include_once ("../includes/functions.php");
+if (!isset($_GET["id"])) {
+    die("<h1 class='text-center text-5xl w-full mt-20'>Cannot Access Page Directly</h1></body></html>");
+}
 
 ?>
 
@@ -12,28 +15,17 @@ include_once("../includes/components.php")
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Delete? - <?php echo$_GET["id"] ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
 <?php
-if (!isset($_GET["id"]) | !isset($_SESSION["testLast"])) {
-    die("<h1 class='text-center text-5xl w-full mt-20'>Cannot Access Page Directly</h1></body></html>");
-}
-function checkId()
-{
-    foreach ($_SESSION["testLast"] as $lastName) {
-        if ($lastName === $_GET["id"]) {
-            unset($_SESSION["testLast"]);
-            return true;
-        }
-    }
-}
-
-if (!checkId()) die("Please dont try to edit your url after the ? </body> </html>");
 
 
-$_SESSION["delete"] = $_GET["id"]
+if (!checkId()) die("<h1 class='text-center text-xl w-full mt-20'>Could not verify url, aborted delete request. <a href='students.php' class='text-red-500'>return?</a></h1></body> </html>");
+
+
+$_SESSION["delete"] = $_GET["id"];
 ?>
 <h1 class="absolute top-0 text-center w-full text-6xl bg-indigo-100 p-10">Delete?</h1>
 <div class="h-screen w-full bg-indigo-100 flex p-10">

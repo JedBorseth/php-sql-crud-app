@@ -53,3 +53,16 @@ function initDb()
     }
     return $db;
 }
+
+
+function checkId(): bool
+{
+    print_r($_SESSION['testId']);
+    foreach ($_SESSION["testId"] as $ids) {
+        if ($ids === $_GET["id"]) {
+            unset($_SESSION["testId"]);
+            return true;
+        }
+    }
+    return false;
+}
